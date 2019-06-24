@@ -253,6 +253,10 @@ class Detector(object):
             self.libc.tag16h5_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tag16h5']=self.libc.tag16h5_create()
             self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tag16h5'], 2)
+        elif 'tag25h8' in self.params['families']:
+            self.libc.tag25h8_create.restype = ctypes.POINTER(_ApriltagFamily)
+            self.tag_families['tag25h8']=self.libc.tag25h8_create()
+            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tag25h8'], 2)
         elif 'tag25h9' in self.params['families']:
             self.libc.tag25h9_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tag25h9']=self.libc.tag25h9_create()
@@ -301,6 +305,9 @@ class Detector(object):
                 if 'tag16h5' == family:
                     self.libc.tag16h5_destroy.restype = None
                     self.libc.tag16h5_destroy(tf)
+                elif 'tag25h8' == family:
+                    self.libc.tag25h8_destroy.restype = None
+                    self.libc.tag25h8_destroy(tf)
                 elif 'tag25h9' == family:
                     self.libc.tag25h9_destroy.restype = None
                     self.libc.tag25h9_destroy(tf)
