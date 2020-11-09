@@ -285,6 +285,11 @@ class Detector(object):
             self.libc.tagStandard52h13_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tagStandard52h13']=self.libc.tagStandard52h13_create()
             self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard52h13'], 2)
+        elif 'tagStandard41h11' in self.params['families']:
+            self.libc.tagStandard41h11_create.restype = ctypes.POINTER(_ApriltagFamily)
+            self.tag_families['tagStandard41h11'] = self.libc.tagStandard41h11_create()
+            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard41h11'], 2)
+
         else:
             raise Exception('Unrecognized tag family name. Use e.g. \'tag36h11\'.\n')
 
@@ -329,6 +334,9 @@ class Detector(object):
                 elif 'tagStandard52h13' == family:
                     self.libc.tagStandard52h13_destroy.restype = None
                     self.libc.tagStandard52h13_destroy(tf)
+                elif 'tagStandard41h11' == family:
+                    self.libc.tagStandard41h11_destroy.restype = None
+                    self.libc.tagStandard41h11_destroy(tf)
 
             # destroy the detector
             self.libc.apriltag_detector_destroy.restype = None
