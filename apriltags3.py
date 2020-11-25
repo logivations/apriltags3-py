@@ -280,7 +280,7 @@ class Detector(object):
         elif 'tagStandard41h12' in self.params['families']:
             self.libc.tagStandard41h12_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tagStandard41h12']=self.libc.tagStandard41h12_create()
-            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard41h12'], 2)
+            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard41h12'], 1)
         elif 'tagStandard52h13' in self.params['families']:
             self.libc.tagStandard52h13_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tagStandard52h13']=self.libc.tagStandard52h13_create()
