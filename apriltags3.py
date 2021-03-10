@@ -288,7 +288,7 @@ class Detector(object):
         elif 'tagStandard41h11' in self.params['families']:
             self.libc.tagStandard41h11_create.restype = ctypes.POINTER(_ApriltagFamily)
             self.tag_families['tagStandard41h11'] = self.libc.tagStandard41h11_create()
-            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard41h11'], 2)
+            self.libc.apriltag_detector_add_family_bits(self.tag_detector_ptr, self.tag_families['tagStandard41h11'], 1)
 
         else:
             raise Exception('Unrecognized tag family name. Use e.g. \'tag36h11\'.\n')
